@@ -437,14 +437,14 @@
     <header>
         <div class="container header-container">
             <div class="logo-section">
-                <!-- PCOE Logo -->
+                <!-- PCCOE Logo -->
                 <div class="pcce-logo-container">
                     <!-- Using GitHub raw URL with fallback -->
                     <img src="https://raw.githubusercontent.com/dineshkute90/virtual_lab_LAUC/main/pccoe.png" 
-                         alt="PCOE Logo" 
+                         alt="PCCOE Logo" 
                          class="pcce-logo-img"
                          id="pcceLogo"
-                         onerror="this.onerror=null; this.src='https://via.placeholder.com/60x60/2c3e50/ffffff?text=PCOE';">
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/60x60/2c3e50/ffffff?text=PCCOE';">
                     <div class="pcce-logo-text">
                         <div class="main">APPLIED SCIENCES & HUMANITIES</div>
                         <div class="sub">Pimpri Chinchwad College of Engineering</div>
@@ -460,7 +460,7 @@
             
             <div class="user-info">
                 <i class="fas fa-user-circle"></i>
-                <span>Welcome, Student</span>
+                <span>Welcome, Viraj & Team</span>
             </div>
         </div>
     </header>
@@ -469,7 +469,7 @@
         <main class="content">
             <div class="content-header">
                 
-                <h2>A Virtual Lab on Rank of Matrix</h2>
+                <h2>A Virtual Lab on National Pension System Calculator</h2>
                 <p>Engineering Mathematics Experiment</p>
             </div>
 
@@ -497,7 +497,7 @@
                 </div>
                 <div class="section-card">
                     <i class="fas fa-clipboard-check"></i>
-                    <h3>Posttest</h3>
+                    <h3>Post-Test</h3>
                     <p>Post-experiment assessment</p>
                 </div>
                 <div class="section-card">
@@ -531,7 +531,7 @@
             const debugInfo = document.getElementById('debugInfo');
             
             logoImg.onload = function() {
-                debugInfo.innerHTML = '✓ PCOE logo loaded successfully';
+                debugInfo.innerHTML = '✓ PCCOE logo loaded successfully';
                 debugInfo.style.background = 'rgba(46, 204, 113, 0.8)';
                 setTimeout(() => {
                     debugInfo.style.display = 'none';
@@ -539,7 +539,7 @@
             };
             
             logoImg.onerror = function() {
-                debugInfo.innerHTML = '✗ PCOE logo failed to load, using fallback';
+                debugInfo.innerHTML = '✗ PCCOE logo failed to load, using fallback';
                 debugInfo.style.background = 'rgba(231, 76, 60, 0.8)';
                 setTimeout(() => {
                     debugInfo.style.display = 'none';
@@ -549,7 +549,7 @@
             // Check after 2 seconds if image loaded
             setTimeout(() => {
                 if (!logoImg.complete || logoImg.naturalHeight === 0) {
-                    debugInfo.innerHTML = '⚠️ PCOE logo loading slowly...';
+                    debugInfo.innerHTML = '⚠️ PCCOE logo loading slowly...';
                 }
             }, 2000);
         });
@@ -590,3 +590,4 @@
     </script>
 </body>
 </html>
+
