@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NPS Virtual Lab - Certificate</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary: #0a2463;
+        --primary-light: #1e40af;
+        --primary-dark: #071a3b;
+        --secondary: #ff6b35;
+        --secondary-light: #ff8b5c;
+        --accent: #3a86ff;
+        --success: #38b000;
+        --dark: #1e293b;
+        --light: #f8fafc;
+        --gray: #64748b;
+        --gray-light: #e2e8f0;
+        --gray-lighter: #f1f5f9;
+        --border-radius: 12px;
+        --border-radius-lg: 16px;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.15),
+          0 10px 10px -5px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, "Segoe UI", system-ui, -apple-system, sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0, #f1f5f9 100%);
+        color: var(--dark);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      /* Header (matches project look) */
+      header {
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary)
+        );
+        color: white;
+        padding: 1.2rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-icon {
+        background: linear-gradient(
+          135deg,
+          var(--secondary),
+          var(--secondary-light)
+        );
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+
+      nav a {
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: none;
+        font-weight: 500;
+        padding: 8px 14px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.95rem;
+        transition: var(--transition);
+      }
+
+      nav a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      /* Main Layout */
+      main {
+        padding: 3rem 0;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+        gap: 2.5rem;
+        align-items: flex-start;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .page-title {
+        text-align: center;
+        margin-bottom: 2.5rem;
+      }
+
+      .page-title h1 {
+        font-size: 2.2rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 0.7rem;
+      }
+
+      .page-title p {
+        color: var(--gray);
+        max-width: 720px;
+        margin: 0 auto;
+      }
+
+      /* Left panel: form and buttons */
+      .control-card {
+        background: #fff;
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-lg);
+        padding: 1.8rem 1.8rem 2rem;
+      }
+
+      .control-card h2 {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+        color: var(--primary-dark);
+      }
+
+      .control-card p {
+        font-size: 0.95rem;
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.4rem;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+        color: var(--primary-dark);
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.75rem 0.9rem;
+        border-radius: 8px;
+        border: 1px solid var(--gray-light);
+        font-size: 1rem;
+        transition: var(--transition);
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.1);
+      }
+
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1.2rem;
+      }
+
+      .btn {
+        appearance: none;
+        border: none;
+        border-radius: 999px;
+        padding: 0.7rem 1.5rem;
+        font-weight: 600;
+        font-size: 0.98rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: var(--transition);
+      }
+
+      .btn-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-light)
+        );
+        color: #fff;
+        box-shadow: 0 4px 12px rgba(10, 36, 99, 0.25);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(10, 36, 99, 0.35);
+      }
+
+      .btn-outline {
+        background: #fff;
+        color: var(--primary-dark);
+        border: 1px solid var(--gray-light);
+      }
+
+      .btn-outline:hover {
+        background: var(--gray-lighter);
+        border-color: var(--primary);
+      }
+
+      .hint {
+        font-size: 0.85rem;
+        color: var(--gray);
+        margin-top: 0.3rem;
+      }
+
+      /* Certificate card */
+      .certificate-wrapper {
+        background: linear-gradient(
+          135deg,
+          rgba(10, 36, 99, 0.06),
+          rgba(58, 134, 255, 0.06)
+        );
+        padding: 1.2rem;
+        border-radius: var(--border-radius-lg);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .certificate {
+        background: #fdfdfd;
+        border-radius: 18px;
+        padding: 2.2rem 2.6rem;
+        border: 2px solid rgba(148, 163, 184, 0.45);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .certificate::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        right: -80px;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(
+          circle at center,
+          rgba(250, 204, 21, 0.25),
+          transparent 60%
+        );
+        opacity: 0.9;
+      }
+
+      .certificate::after {
+        content: "";
+        position: absolute;
+        bottom: -80px;
+        left: -80px;
+        width: 220px;
+        height: 220px;
+        background: radial-gradient(
+          circle at center,
+          rgba(59, 130, 246, 0.18),
+          transparent 60%
+        );
+      }
+
+      .cert-inner {
+        position: relative;
+        z-index: 1;
+      }
+
+      .cert-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cert-org {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+
+      .cert-org span:first-child {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--gray);
+      }
+
+      .cert-org span:last-child {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary-dark);
+      }
+
+      .cert-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.9rem;
+        border-radius: 999px;
+        background: rgba(56, 176, 0, 0.08);
+        color: var(--success);
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .cert-title {
+        text-align: center;
+        margin: 1.3rem 0 0.9rem;
+      }
+
+      .cert-title h2 {
+        font-size: 1.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--primary-dark);
+      }
+
+      .cert-subtitle {
+        text-align: center;
+        font-size: 0.92rem;
+        color: var(--gray);
+        margin-bottom: 2rem;
+      }
+
+      .cert-name-label {
+        text-align: center;
+        font-size: 0.85rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        color: var(--gray);
+      }
+
+      .cert-name {
+        text-align: center;
+        font-size: 1.9rem;
+        margin: 0.8rem 0 0.4rem;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .cert-description {
+        text-align: center;
+        font-size: 0.95rem;
+        color: var(--gray);
+        max-width: 520px;
+        margin: 0.4rem auto 2rem;
+      }
+
+      .cert-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 2rem;
+        margin-top: 1.5rem;
+      }
+
+      .cert-meta-left span {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--gray);
+      }
+
+      .cert-meta-left strong {
+        display: block;
+        font-size: 0.9rem;
+        color: var(--primary-dark);
+        margin-top: 0.3rem;
+      }
+
+      .cert-meta-right {
+        text-align: right;
+      }
+
+      .signature {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 1.6rem;
+        color: var(--primary-dark);
+        margin-bottom: 0.2rem;
+      }
+
+      .signature-line {
+        border-top: 1px solid rgba(148, 163, 184, 0.7);
+        margin-top: 0.3rem;
+      }
+
+      .issuer-name {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 0.3rem;
+        color: var(--primary-dark);
+      }
+
+      .issuer-role {
+        font-size: 0.8rem;
+        color: var(--gray);
+      }
+
+      .cert-footer {
+        text-align: center;
+        margin-top: 1.4rem;
+        font-size: 0.78rem;
+        color: var(--gray);
+      }
+
+      /* Print: only certificate block */
+      @media print {
+        body {
+          background: #fff;
+        }
+        header,
+        main > .container > .page-title,
+        .control-card {
+          display: none !important;
+        }
+        .no-print {
+          display: none !important;
+        }
+        .certificate-wrapper {
+          box-shadow: none;
+          margin: 0;
+          padding: 0;
+        }
+        .certificate {
+          border-radius: 0;
+          border: none;
+          width: 100%;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <span>NPS Virtual Lab - Certificate</span>
+          </div>
+          <nav>
+            <ul>
+              <li>
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+              </li>
+              <li>
+                <a href="simulation.html"
+                  ><i class="fas fa-calculator"></i> Calculator</a
+                >
+              </li>
+              <li>
+                <a href="posttest.html"
+                  ><i class="fas fa-clipboard-check"></i> Post-Test</a
+                >
+              </li>
+              <li>
+                <a href="certificate.html"
+                  ><i class="fas fa-award"></i> Certificate</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <div class="page-title">
+          <h1>Certificate of Completion</h1>
+          <p>
+            Generate a professional certificate for learners who successfully
+            complete the NPS Calculator Virtual Lab.
+          </p>
+        </div>
+
+        <div class="layout">
+          <!-- Left: form and actions -->
+          <div class="control-card">
+            <h2>Generate Your Certificate</h2>
+            <p>
+              Enter your full name and click
+              <strong>Generate Certificate</strong>. Then use the print button
+              to download or print it as PDF.
+            </p>
+
+            <div class="form-group">
+              <label for="learnerName">Learner Name</label>
+              <input
+                type="text"
+                id="learnerName"
+                placeholder="Enter your full name"
+              />
+              <div class="hint">Example: Viraj P. Satpute</div>
+            </div>
+
+            <div class="btn-row">
+              <button class="btn btn-primary" id="generateBtn">
+                <i class="fas fa-magic"></i> Generate Certificate
+              </button>
+              <button class="btn btn-outline" id="printBtn">
+                <i class="fas fa-print"></i> Print Certificate
+              </button>
+            </div>
+
+            <p class="hint" style="margin-top: 1rem">
+              Tip: After generating, use <strong>Print</strong> and choose “Save
+              as PDF” to download a soft copy.
+            </p>
+          </div>
+
+          <!-- Right: certificate preview -->
+          <div class="certificate-wrapper">
+            <div class="certificate" id="certificateArea">
+              <div class="cert-inner">
+                <div class="cert-header">
+                  <div class="cert-org">
+                    <span>PCCOE Virtual Labs</span>
+                    <span>NPS Calculator – Engineering Mathematics</span>
+                  </div>
+                  <div class="cert-badge">
+                    <i class="fas fa-star"></i> Certified Completion
+                  </div>
+                </div>
+
+                <div class="cert-title">
+                  <h2>Certificate of Completion</h2>
+                </div>
+                <div class="cert-subtitle">
+                  This certificate is proudly presented to the learner named
+                  below for successfully completing the National Pension System
+                  (NPS) Calculator Virtual Lab experiment.
+                </div>
+
+                <div class="cert-name-label">Awarded To</div>
+                <div class="cert-name" id="certName">[ Your Name Here ]</div>
+
+                <div class="cert-description">
+                  for demonstrating understanding of NPS concepts, engineering
+                  mathematics, and practical application of compound interest
+                  and annuity calculations through interactive simulation and
+                  assessments.
+                </div>
+
+                <div class="cert-meta">
+                  <div class="cert-meta-left">
+                    <span>Date of Issue</span>
+                    <strong id="issueDate"></strong>
+                  </div>
+                  <div class="cert-meta-right">
+                    <div class="signature" id="signatureText">
+                      Viraj P. Satpute
+                    </div>
+                    <div class="signature-line"></div>
+                    <div class="issuer-name">Viraj P. Satpute</div>
+                    <div class="issuer-role">
+                      Certificate Issuer · NPS Virtual Lab
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cert-footer">
+                  This is a system-generated certificate and does not require a
+                  physical seal or handwritten signature.
+                </div>
+              </div>
+            </div>
+
+            <!-- Print button below certificate preview -->
+            <div style="text-align: center; margin-top: 14px" class="no-print">
+              <button class="btn btn-outline" id="printBtnPreview">
+                <i class="fas fa-print"></i> Print Certificate
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Simple pool of "random-looking" signature variants of Viraj's name
+      const signatureVariants = [
+        "V. P. Satpute",
+        "Viraj P. Satpute",
+        "V. Satpute",
+        "Viraj P.",
+        "VPSatpute",
+      ];
+
+      function formatIssueDate() {
+        const today = new Date();
+        const options = { year: "numeric", month: "long", day: "numeric" };
+        return today.toLocaleDateString(undefined, options);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const nameInput = document.getElementById("learnerName");
+        const certName = document.getElementById("certName");
+        const issueDate = document.getElementById("issueDate");
+        const signatureText = document.getElementById("signatureText");
+
+        // Set current date
+        issueDate.textContent = formatIssueDate();
+
+        document
+          .getElementById("generateBtn")
+          .addEventListener("click", function () {
+            const name = nameInput.value.trim();
+            if (!name) {
+              alert(
+                "Please enter your name before generating the certificate."
+              );
+              nameInput.focus();
+              return;
+            }
+
+            certName.textContent = name;
+
+            // Pick a random signature style for Viraj
+            const randomIndex = Math.floor(
+              Math.random() * signatureVariants.length
+            );
+            signatureText.textContent = signatureVariants[randomIndex];
+
+            // Small visual feedback
+            certName.style.transition = "transform 0.3s ease, color 0.3s ease";
+            certName.style.transform = "scale(1.02)";
+            certName.style.color = "#0a2463";
+            setTimeout(() => {
+              certName.style.transform = "scale(1)";
+            }, 300);
+          });
+
+        document
+          .getElementById("printBtn")
+          .addEventListener("click", function () {
+            window.print();
+          });
+
+        // Print button placed under preview
+        const previewPrintBtn = document.getElementById("printBtnPreview");
+        if (previewPrintBtn) {
+          previewPrintBtn.addEventListener("click", function () {
+            window.print();
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
